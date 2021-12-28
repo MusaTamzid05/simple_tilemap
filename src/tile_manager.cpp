@@ -17,7 +17,7 @@ namespace TileMap {
 
             
         std::cout << "texture is loaded.\n";
-        m_sprite = new sf::Sprite(*m_texture, sf::IntRect(0, 0, 200, 200));
+        m_sprite = new sf::Sprite(*m_texture);
     }
 
 
@@ -27,11 +27,6 @@ namespace TileMap {
     }
 
     void TileManager::render(sf::RenderWindow& window) {
-
-        if(m_sprite == nullptr) {
-        }
-
-            std::cout << "Drawing\n";
         window.draw(*m_sprite);
     }
 
