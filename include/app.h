@@ -5,13 +5,16 @@
 
 #include <SFML/Graphics.hpp>
 
+
 namespace TileMap {
+    struct TileManager;
+
     struct App {
         App(
             int width = 640,
             int height = 480, const std::string& window_name = "Window"
                 );
-        virtual ~App() {}
+        virtual ~App();
 
         void run();
 
@@ -24,6 +27,7 @@ namespace TileMap {
         bool m_running;
 
         sf::RenderWindow m_window;
+        TileManager* m_tile_manager;
 
 
     };
