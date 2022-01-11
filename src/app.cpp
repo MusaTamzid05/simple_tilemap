@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include "tile_manager.h"
+#include "edge_detector.h"
 
 namespace TileMap {
     App::App(int width, int height, const std::string& window_name):
@@ -10,12 +11,13 @@ namespace TileMap {
         m_running(false),
         m_window(sf::VideoMode(width, height), window_name) {
             m_tile_manager = new TileManager("../resources/tile_set_1.png");
+            screenshot_path = "test.jpg";
+
 
     }
 
     App::~App() {
         delete m_tile_manager;
-        take_screenshot();
     }
 
 
@@ -28,6 +30,10 @@ namespace TileMap {
             render();
 
         }
+
+        take_screenshot();
+        Vision::EdgeDetector detector(screenshot_path);
+        detector.run();
     }
 
     void App::handle_event(sf::Event& event) {
@@ -56,7 +62,7 @@ namespace TileMap {
         sf::Image screenshot_image = texture.copyToImage();
 
 
-        if(!screenshot_image.saveToFile("test.jpg")) {
+        if(!screenshot_image.saveToFile(screenshot_path)) {
             std::cerr << "Could not save image.\n";
         }
 

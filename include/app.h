@@ -31,6 +31,8 @@ namespace TileMap {
         sf::RenderWindow m_window;
         TileManager* m_tile_manager;
 
+        std::string screenshot_path;
+
 
     };
 }
