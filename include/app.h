@@ -6,6 +6,7 @@
 #include <SFML/Graphics.hpp>
 
 
+
 namespace TileMap {
     struct TileManager;
 
@@ -20,6 +21,7 @@ namespace TileMap {
 
         void handle_event(sf::Event& event);
         void render();
+        void close_window();
 
         void take_screenshot() const;
 

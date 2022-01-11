@@ -1,4 +1,5 @@
 #include "edge_detector.h"
+#include "utils.h"
 
 namespace Vision {
     EdgeDetector::EdgeDetector(const std::string& src_image_path) {
@@ -12,20 +13,12 @@ namespace Vision {
     }
 
     EdgeDetector::~EdgeDetector() {
-        cv::destroyAllWindows();
-        std::cout << "Destroyting all the window.\n";
     }
 
 
-    void EdgeDetector::show(const cv::Mat& src_image) const {
-        std::string window_name = "Vision Window";
-        cv::namedWindow(window_name, cv::WINDOW_NORMAL);
-        cv::imshow(window_name, src_image);
-
-        cv::waitKey(0);
-    }
 
     void EdgeDetector::run() {
-        show(src_image);
+        CVutils::show_image(src_image);
+
     }
 }

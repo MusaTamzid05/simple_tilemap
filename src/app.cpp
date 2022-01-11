@@ -2,7 +2,6 @@
 #include <iostream>
 
 #include "tile_manager.h"
-#include "edge_detector.h"
 
 namespace TileMap {
     App::App(int width, int height, const std::string& window_name):
@@ -17,7 +16,6 @@ namespace TileMap {
     }
 
     App::~App() {
-        delete m_tile_manager;
     }
 
 
@@ -28,12 +26,13 @@ namespace TileMap {
         while(m_running) {
             handle_event(m_event);
             render();
-
         }
 
+
         take_screenshot();
-        Vision::EdgeDetector detector(screenshot_path);
-        detector.run();
+        close_window();
+
+
     }
 
     void App::handle_event(sf::Event& event) {
@@ -66,6 +65,12 @@ namespace TileMap {
             std::cerr << "Could not save image.\n";
         }
 
+
+    }
+
+    void App::close_window() {
+        delete m_tile_manager;
+        m_window.close();
 
     }
 }

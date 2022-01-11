@@ -15,6 +15,7 @@ SET(SOURCE_FILES
     src/app.cpp
     src/tile_manager.cpp
     src/edge_detector.cpp
+    src/utils.cpp
     )
 
 
