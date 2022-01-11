@@ -21,6 +21,8 @@ namespace TileMap {
         void handle_event(sf::Event& event);
         void render();
 
+        void take_screenshot() const;
+
 
         int width;
         int height;

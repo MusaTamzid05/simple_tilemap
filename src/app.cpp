@@ -15,6 +15,7 @@ namespace TileMap {
 
     App::~App() {
         delete m_tile_manager;
+        take_screenshot();
     }
 
 
@@ -44,5 +45,21 @@ namespace TileMap {
         m_window.clear();
         m_tile_manager->render(m_window);
         m_window.display();
+    }
+
+
+    void App::take_screenshot() const {
+        sf::Texture texture;
+        texture.create(m_window.getSize().x, m_window.getSize().y);
+        texture.update(m_window);
+
+        sf::Image screenshot_image = texture.copyToImage();
+
+
+        if(!screenshot_image.saveToFile("test.jpg")) {
+            std::cerr << "Could not save image.\n";
+        }
+
+
     }
 }
