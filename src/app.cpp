@@ -41,6 +41,11 @@ namespace TileMap {
             if(event.type == sf::Event::EventType::Closed) {
                 m_running = false;
             }
+            else if(event.type == sf::Event::KeyPressed) {
+                if(event.key.code == sf::Keyboard::Escape)
+                    m_running = false;
+
+            }
         }
 
     }
