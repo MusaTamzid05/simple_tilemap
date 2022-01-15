@@ -50,11 +50,39 @@ namespace Vision {
     void EdgeDetector::run(bool draw) {
         std::vector<cv::Vec4i> hierarchy;
         std::vector<std::vector<cv::Point>>  contours = get_contours(src_image, hierarchy);
+        std::cout << "Contour size " << contours.size() << "\n";
 
-        if(draw)
+        if(draw) {
             draw_contours(contours, src_image.size(), hierarchy);
+            draw_points(contours);
+
+        }
 
 
 
+
+
+    }
+
+    void EdgeDetector::draw_points(const std::vector<std::vector<cv::Point>>& contours) const {
+        int radius = 5;
+        int thikness = 1;
+
+        for(std::vector<cv::Point> contour : contours) {
+            cv::Mat test_image = src_image.clone();
+
+            std::cout << "=========================\n";
+            std::cout << contour.size() << "\n";
+            for(cv::Point point : contour) {
+                std::cout << point << "\n";
+                cv::circle(test_image, point, radius, cv::Scalar(0, 100, 0), cv::FILLED);
+
+
+            }
+
+            CVutils::show_image(test_image);
+
+            std::cout << "=========================\n";
+        }
     }
 }

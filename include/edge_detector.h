@@ -22,6 +22,8 @@ namespace Vision {
                 const cv::Size& image_size,
                 const std::vector<cv::Vec4i>& hierarchy) const;
 
+        void draw_points(const std::vector<std::vector<cv::Point>>& points) const;
+
         cv::Mat src_image;
     };
 }
