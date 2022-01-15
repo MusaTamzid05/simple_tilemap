@@ -1,5 +1,6 @@
 #include "utils.h"
 #include <opencv4/opencv2/opencv.hpp>
+#include <fstream>
 
 namespace CVutils {
 
@@ -25,6 +26,29 @@ namespace CVutils {
         show_image(image);
     }
 
+
+}
+
+namespace Utils {
+
+    FileHandler::FileHandler(const std::string& path):path(path) {
+
+    }
+
+
+    void FileHandler::write(const std::vector<std::string>& lines) const {
+        std::ofstream outfile(path);
+
+        if(!outfile.is_open()) {
+            std::cerr << "Could not open " << path << "\n";
+            return;
+        }
+
+        for(std::string line : lines)
+            outfile << line << "\n";
+
+        outfile.close();
+    }
 }
 
 
