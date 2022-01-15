@@ -47,7 +47,7 @@ namespace Vision {
 
     }
 
-    void EdgeDetector::run(bool draw) {
+    void EdgeDetector::run(const std::string save_path, bool draw) {
         std::vector<cv::Vec4i> hierarchy;
         std::vector<std::vector<cv::Point>>  contours = get_contours(src_image, hierarchy);
         std::cout << "Contour size " << contours.size() << "\n";
@@ -58,7 +58,7 @@ namespace Vision {
 
         }
 
-        save(contours);
+        save(save_path, contours);
 
 
 
@@ -101,14 +101,16 @@ namespace Vision {
 
     }
 
-    void EdgeDetector::save(const std::vector<std::vector<cv::Point>>& contours) const {
+    void EdgeDetector::save(const std::string save_path, const std::vector<std::vector<cv::Point>>& contours) const {
         std::vector<std::string> lines;
 
         for(std::vector<cv::Point> points : contours) 
             lines.push_back(point_to_str(points));
 
-        for(std::string line : lines)
-            std::cout << line << "\n";
+        Utils::FileHandler file_handler(save_path);
+        file_handler.write(lines);
+
+        std::cout << "tiles data saved in " << save_path << "\n";
 
 
     }

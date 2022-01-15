@@ -11,8 +11,8 @@ namespace Vision {
         EdgeDetector(const std::string& image_path);
         virtual ~EdgeDetector();
 
-        void run(bool draw = true);
-        void save(const std::vector<std::vector<cv::Point>>& contours) const;
+        void run(const std::string save_path, bool draw = true);
+        void save(const std::string save_path, const std::vector<std::vector<cv::Point>>& contours) const;
 
         std::vector<std::vector<cv::Point>> get_contours(
                 const cv::Mat& image, 
