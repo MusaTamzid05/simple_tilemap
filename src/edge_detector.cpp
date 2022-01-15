@@ -58,7 +58,7 @@ namespace Vision {
 
         }
 
-
+        save(contours);
 
 
 
@@ -74,7 +74,7 @@ namespace Vision {
             std::cout << "=========================\n";
             std::cout << contour.size() << "\n";
             for(cv::Point point : contour) {
-                std::cout << point << "\n";
+                std::cout << point.x << "- " << point.y << "\n";
                 cv::circle(test_image, point, radius, cv::Scalar(0, 100, 0), cv::FILLED);
 
 
@@ -84,5 +84,32 @@ namespace Vision {
 
             std::cout << "=========================\n";
         }
+    }
+
+
+
+    std::string EdgeDetector::point_to_str(const std::vector<cv::Point>& points) const {
+         std::string final_str = "";
+
+         for(cv::Point point : points) 
+             final_str += std::to_string(point.x) + "," + std::to_string(point.y) + " ";
+
+
+         return final_str;
+
+
+
+    }
+
+    void EdgeDetector::save(const std::vector<std::vector<cv::Point>>& contours) const {
+        std::vector<std::string> lines;
+
+        for(std::vector<cv::Point> points : contours) 
+            lines.push_back(point_to_str(points));
+
+        for(std::string line : lines)
+            std::cout << line << "\n";
+
+
     }
 }

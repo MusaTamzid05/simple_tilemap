@@ -16,6 +16,8 @@ namespace CVutils {
 }
 
 namespace Utils {
+
+
     struct FileHandler {
         FileHandler(const std::string& path);
         virtual ~FileHandler() {}

@@ -12,6 +12,7 @@ namespace Vision {
         virtual ~EdgeDetector();
 
         void run(bool draw = true);
+        void save(const std::vector<std::vector<cv::Point>>& contours) const;
 
         std::vector<std::vector<cv::Point>> get_contours(
                 const cv::Mat& image, 
@@ -23,6 +24,8 @@ namespace Vision {
                 const std::vector<cv::Vec4i>& hierarchy) const;
 
         void draw_points(const std::vector<std::vector<cv::Point>>& points) const;
+
+        std::string point_to_str(const std::vector<cv::Point>& points) const ;
 
         cv::Mat src_image;
     };

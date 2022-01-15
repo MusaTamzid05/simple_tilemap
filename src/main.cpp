@@ -8,7 +8,7 @@ int main(int argc, char** argv) {
     app->run();
 
     Vision::EdgeDetector detector(app->screenshot_path);
-    detector.run();
+    detector.run(false);
 
 
 
